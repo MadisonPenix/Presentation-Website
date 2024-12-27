@@ -1,0 +1,12 @@
+<header>
+    <div class = "navbar">
+        <span class = "navbar-left">
+            <h3> Create.  Share.  Improve.</h3>
+        </span>
+        <span class = "navbar-right">
+            <%= link_to "Profile", edit_user_registration_path, class: "button" %>
+            <%= link_to "View Presentations", presentations_path, class: "button" %>
+            <%= button_to "Log out", destroy_user_session_path, method: :delete, class:"button" %>
+        </span>
+    </div>
+</header>

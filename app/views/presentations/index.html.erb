@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Presentations" %>
+
+<div class="presentation-header">
+  <h1>Presentations</h1>
+
+
+  <select id = "optionButton" onchange = "sort()" class="button">
+    <option value = "Default" >Default</option>
+    <option value = "Ascending" >A-Z</option>
+    <option value = "Descending">Z-A</option>
+    <option value = "Newest">Newest</option>
+    <option value = "Oldest">Oldest</option>
+    <option value = "Graded">Graded</option>
+    <option value = "NotGraded">Not Graded</option>
+  </select>
+</div>
+
+<div id="presentations">
+  <% @presentations.each do |presentation| %>
+    <div class = "presentation-list" data-title= "<%= presentation.title%>" data-date = "<%= presentation.created_at%>" 
+          data-id="<%= dom_id presentation %>" data-graded= "<%= presentation.graded%>">
+    <%= render presentation %>
+    <p>
+      <%= link_to "Show this presentation", presentation, class: "button" %>
+    </p>
+	<hr>
+  <% end %>
+</div>
+<% if current_user.admin? %>
+  <div class="new-presentation">
+    <%= link_to "New presentation", new_presentation_path, class: "button" %>
+  </div>
+<%end%>

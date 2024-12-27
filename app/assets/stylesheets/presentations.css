@@ -1,0 +1,14 @@
+.presentation-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+strong{
+    text-decoration: underline;
+}
+
+.info {
+    color: black;
+}

@@ -1,0 +1,19 @@
+.footer{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: whitesmoke; 
+    border-radius: 5px;
+    text-align: start;
+    width: 100%;
+}
+
+.content{
+    padding-bottom: 50px;
+}
+
+h4{
+    color: #1b1c39;
+    margin-left: 10px;
+}

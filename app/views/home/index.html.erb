@@ -1,0 +1,30 @@
+<% if user_signed_in? %>
+	<% if current_user.admin? %>
+		<div class="form">
+			<h2>All Users</h2>
+			<ul>
+			<% User.all.each do |user| %>
+				<li>
+					<%= user.email %>
+					&mdash;
+					<%= user.name %>
+					<% if user.admin? %>
+						<i> (Admin)</i>
+					<% end %>
+				</li>
+			<% end %>
+			</ul>
+			<div class="center">
+				<%= link_to "Create Presentation", new_presentation_path, class: "button" %>
+			</div>
+		</div>
+	<% end %>
+<%else %>
+	<%= image_tag("lightbulb.png") %>
+
+	<h1> Create.  Share.  Improve.</h1>
+	<span>
+		<button type = "button" class = "title"><%= link_to "Login", new_user_session_path, class:"link-button" %></button>
+    	<button type = "button" class = "title"><%= link_to "Sign Up", new_user_registration_path, class:"link-button" %></button>
+	</span>
+<% end %>

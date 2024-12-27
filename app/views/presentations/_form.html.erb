@@ -1,0 +1,44 @@
+<div class= "form">
+<%= form_with(model: presentation) do |form| %>
+  <% if presentation.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(presentation.errors.count, "error") %> prohibited this presentation from being saved:</h2>
+
+      <ul>
+        <% presentation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class= "field">
+    <%= form.label :title, style: "display: block"%>
+    <%= form.text_field :title, class: "input" %>
+  </div>
+
+  <div class= "field">
+    <%= form.label "Presented By:", style: "display: block", class: "input" %>
+    <div>
+      <%= collection_select( :presentation, :id, User.all, :id, :name, {}, {:multiple => true} ) %>
+    </div>
+  </div>
+
+  <div class= "field">
+    <%= form.label :description, style: "display: block" %>
+    <%= form.textarea :description, class: "input" %>
+  </div>
+
+  <div class= "field">
+    <%= form.label :grade, style: "display: block" %>
+    <%= form.number_field :grade, class: "input" %>
+  </div>
+
+  <div class= "field">
+    <%= form.checkbox :graded %>
+    <%= form.label :graded, style: "display: inline-block" %>
+  </div>
+  
+  <%= form.submit %>
+<% end %>
+</div>
